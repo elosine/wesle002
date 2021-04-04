@@ -3,7 +3,7 @@ s.options.memSize_(65536 * 8);
 s.waitForBoot{
 	e = Buffer.read(s,"/Users/jwy/Documents/GitHub/wesle002/grainEnv/gEnv_expodec.aif");
 	SynthDef(\wesle002, {
-		arg amp=1, outCh = 0, inCh=0, envBuf, thresh=0.55, grDurA=0.055, grDurB=0.085, delayTime= 0.165, damp= 0.5, size=0.1, diff= 0.707, feedback= 0.4, modDepth= 0.0, modFreq= 0, mix=0.8;
+		arg amp=1.3, outCh = 0, inCh=2, envBuf, thresh=0.55, grDurA=0.055, grDurB=0.085, delayTime= 0.165, damp= 0.5, size=0.1, diff= 0.707, feedback= 0.4, modDepth= 0.0, modFreq= 0, mix=0.8;
 		var src, chain, trig, grain, ghGrain, sig;
 		src = SoundIn.ar(inCh);
 		chain = FFT(LocalBuf(512), src);
@@ -16,3 +16,4 @@ s.waitForBoot{
 })
 x = Synth(\wesle002, [\envBuf,e]);
 x.set(\inCh, 2);
+x.set(\amp, 1.3);
